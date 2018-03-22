@@ -1,0 +1,20 @@
+{
+  "name": "webpackconfigjs",
+  "version": "1.0.0",
+  "description": "lallal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lixin1993225/webpackconfigjs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lixin1993225/webpackconfigjs/issues"
+  },
+  "homepage": "https://github.com/lixin1993225/webpackconfigjs#readme"
+}
