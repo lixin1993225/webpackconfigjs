@@ -5,9 +5,9 @@ const isDev = process.env.NODE_ENV==='development';//判断是生产环境还是
 const ExtractPlugin = require('extract-text-webpack-plugin')
 const config = {
 	target:"web",
-	entry:path.join(__dirname, ''),//入口文件
+	entry:path.join(__dirname, 'src/index.js'),//入口文件
 	output:{
-		filename:'bundle.js',
+		filename:'bundle.[hash:8].js',
 		path:path.join(__dirname,'dist')
 	},
 	module:{
@@ -31,10 +31,12 @@ const config = {
 			{
 				test:/\.(gif|png|jpeg|jpg)$/,
 				use:[
-					loader:'url-loader',
-					options:{
-						limit:1024,
-						name:'[name]-lizn.[ext]'
+					{
+						loader:'url-loader',
+						options:{
+							limit:1024,
+							name:'[name]-lizn.[ext]'
+						}
 					}
 				]
 			}
@@ -49,7 +51,7 @@ const config = {
 		new HTMLPlugin()
 	]
 }
-if(idDev){
+if(isDev){
 	config.module.rules.push(
 		{
 			test:/\.styl$/,
@@ -63,7 +65,7 @@ if(idDev){
 	config.devtool="#cheap-module-eval-source-map"
 	config.devServer = {
 		port:8080,
-		host:'0,0,0,0',
+		host:'0.0.0.0',
 		overlay:{
 			errors:true
 		},
@@ -77,7 +79,7 @@ if(idDev){
 }else{
 	config.entry={
 		app:path.join(__dirname,'src/index.js'),
-		vendor:['vue','vue-router']
+		vendor:['vue']
 	};
 	config.output.filename = '[name].[chunkhash:8].js'
 	config.module.rules.push(
